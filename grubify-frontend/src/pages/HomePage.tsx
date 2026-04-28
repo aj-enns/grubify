@@ -119,7 +119,7 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg" sx={{ mt: 3, mb: 3 }}>
       {/* Hero Section */}
       <Box
         sx={{
