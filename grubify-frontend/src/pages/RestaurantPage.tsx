@@ -193,19 +193,29 @@ const RestaurantPage: React.FC = () => {
             }}
           >
             {items.map((item) => (
-              <Card key={item.id} sx={{ display: 'flex', height: 200 }}>
+              <Card key={item.id} sx={{ display: 'flex', minHeight: 200 }}>
                 <CardMedia
                   component="img"
                   sx={{ width: 150, objectFit: 'cover' }}
                   image={item.imageUrl}
                   alt={item.name}
+                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                    e.currentTarget.src = 'https://placehold.co/150x200?text=No+Image';
+                  }}
                 />
                 <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <CardContent sx={{ flex: 1 }}>
                     <Typography variant="h6" component="h3" gutterBottom>
                       {item.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                    <Typography variant="body2" color="text.secondary" sx={{
+                      mb: 1,
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                    }}>
                       {item.description}
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
